@@ -1,0 +1,34 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/office-service
+    username: postgres
+    password: root@123
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: 'false'
+    hibernate:
+      show-sql: 'true'
+      ddl-auto: update
+    show-sql: 'false'
+  mail:
+    properties:
+      mail:
+        transport:
+          protocol: smtp
+        smtp:
+          starttls:
+            enable: true
+            required: true
+    host: smtp.gmail.com
+    username: officeservicehelpdesk@gmail.com
+    password: fpxyzzlobyaagkpn
+    port: 587
+
+redirect-url:
+  reset-password: https://localhost:8080/

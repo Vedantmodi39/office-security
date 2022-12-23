@@ -1,0 +1,29 @@
+version: '3'
+services:
+  office-docker:
+    image: officeimage
+    build: .
+    ports:
+      - "8080:8080"
+    restart: always
+    depends_on:
+      - office-postgres
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://office-postgres:5432/office-service
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=root@123
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+  office-postgres:
+    image: postgres
+
+    restart: always
+    expose:
+      - 5432
+    ports:
+      - "5433:5432"
+    environment:
+      - POSTGRES_PASSWORD=root@123
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=office-service
+
+
